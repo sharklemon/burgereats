@@ -1,0 +1,23 @@
+{
+  "name": "burgereats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mysql": "^2.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharklemon/burgereats.git"
+  },
+  "author": "AM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharklemon/burgereats/issues"
+  },
+  "homepage": "https://github.com/sharklemon/burgereats#readme"
+}
