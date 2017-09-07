@@ -1,0 +1,86 @@
+<div class="container">
+
+<div class="jumbotron"><!-- jumbotron class -->
+  <h1 class="text-center" id="JTtitle"><strong>Medicine Tracker</strong></h1>
+</div> <!-- jumbotron class -->
+
+<div class="row"><!-- main row for content -->
+  <div class="col-lg-4 leftcol"><!-- left column for uneaten meds -->
+    
+    <!-- left row within col for heading -->
+    <div class="row text-center" id="lefttitle"><h3>Here are the meds you have scheduled</h3></div>
+    
+    <!-- left row within col for medicine list --> 
+    <div class="row" id="leftlist">
+      <ul>
+        {{#each medicine}}
+          {{#unless this.taken}}
+            <li>
+              {{this.name}}
+
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="taken" value="true">
+                <button type="submit">Eat me!</button>
+              </form>
+
+              {{> meds/delete-med}}
+            </li>
+          {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+  </div><!-- left column for uneaten meds -->
+
+  <div class="col-lg-4 leftcol"><!-- center column for med input -->
+    
+    <!-- center row within col for heading -->
+    <div class="row text-center" id="centertitle"><h3>Enter a new medication here</h3></div>
+    
+    <!-- center row within col for medicine list --> 
+    <div class="row" id="centerinput">
+      <form class="create-update-form" action="/" method="POST">
+
+        <div class="form-group">
+          <label for="ca">Medication Name:</label>
+          <input type="text" id="ca" name="name">
+        </div>
+
+        <div class="form-group">
+          <label for="dosage">What is the dosage?</label><br>
+          <input type="text" id="dose" name="dose">
+        </div>
+
+        <button type="submit">Add Medicine</button>
+      </form>      
+    </div>
+  </div><!-- center column for med input -->
+
+  <div class="col-lg-4 leftcol"><!-- right column for eaten meds -->
+    
+    <!-- right row within col for heading -->
+    <div class="row text-center" id="righttitle"><h3>Here are the meds you have taken</h3></div>
+    
+    <!-- right row within col for medicine list --> 
+    <div class="row" id="rightlist">
+      <ul>
+        {{#each medicine}}
+          {{#if this.taken}}
+            <li>
+              {{this.name}}
+
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="sleepy" value="false">
+                {{!-- <button type="submit">WAKE UP!</button> --}}
+              </form>
+
+              {{> meds/delete-med}}
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>      
+    </div>
+  </div><!-- right column for eaten meds -->   
+
+</div>  <!-- main row for content -->
+
+</div> <!---container-->
